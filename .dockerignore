@@ -1,0 +1,12 @@
+.git
+.gitignore
+README.md
+.env
+.env.*
+node_modules
+.nyc_output
+coverage
+*.log
+Dockerfile
+docker-compose.yml
+.dockerignore

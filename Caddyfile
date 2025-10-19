@@ -1,0 +1,22 @@
+{$DOMAIN:localhost} {
+    tls /etc/ssl/certs/certificate.pem /etc/ssl/certs/key.pem
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        X-XSS-Protection "1; mode=block"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+    reverse_proxy open-webui:8080 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+}
+
+http://{$DOMAIN:localhost} {
+    redir https://{host}{uri}
+}
