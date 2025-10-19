@@ -29,6 +29,7 @@ services:
       - OPENAI_API_BASE_URL=https://api.z.ai/api/coding/paas/v4
       - OPENAI_API_KEY=${ZAI_API_KEY}
       - WEBUI_SECRET=${WEBUI_SECRET}
+      - CORS_ALLOW_ORIGIN=https://nonexistent.domain.invalid
     volumes:
       - open-webui:/app/backend/data
     networks:
