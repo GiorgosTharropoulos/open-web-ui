@@ -1,4 +1,4 @@
-{$DOMAIN:localhost} {
+{$DOMAIN_NAME:localhost} {
     tls /etc/ssl/certs/certificate.pem /etc/ssl/certs/key.pem
 
     header {
@@ -17,6 +17,6 @@
     }
 }
 
-http://{$DOMAIN:localhost} {
+http://{$DOMAIN_NAME:localhost} {
     redir https://{host}{uri}
 }
