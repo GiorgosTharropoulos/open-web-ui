@@ -34,6 +34,18 @@ services:
     networks:
       - webui-network
 
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 300 open-webui
+    networks:
+      - webui-network
+    depends_on:
+      - open-webui
+
 networks:
   webui-network:
     driver: bridge
